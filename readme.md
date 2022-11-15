@@ -3,13 +3,13 @@
 ## 1. Create a new project
 
 ```bash
-django-admin startproject tutorial
+django-admin startproject core .
 ```
 
 ## 2. Create a new app
 
 ```bash
-python manage.py startapp quickstart
+python manage.py startapp api
 ```
 
 ## 3. Add the app to the project
