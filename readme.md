@@ -29,3 +29,20 @@ INSTALLED_APPS = [
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+@api_view(['GET'])
+def hello_world(request):
+    return Response({'message': 'Hello, World!'})
+
+```
+
+## 5. Create a URL
+
+```python
+# quickstart/urls.py
+from django.urls import path
+from .views import index
+
+urlpatterns = [
+    path('index', index),
+]
+```

@@ -11,10 +11,5 @@ def index(request):
     return Response({'message': 'Hello, World!'})
 
 
-def home(request):
-    data = request.body
-    print(type(data))
-    print(data)
-    return JsonResponse({'message': 'Hello, World!'})
 
 
