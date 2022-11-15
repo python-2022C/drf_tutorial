@@ -3,6 +3,7 @@ from rest_framework.response import Response
 # Import django rest framework request
 from rest_framework.request import Request
 from .models import Student
+from .serializers import StudentSerializer
 # Create your views here.
 @api_view(['GET'])
 def index(request: Request):
@@ -16,15 +17,23 @@ def index(request: Request):
 @api_view(['POST'])
 def addStudent(request: Request):
     data = request.data
-    name = data.get('name','Ali')
-    score = data.get('score',0)
-    city = data.get('city','Jizzax')
+    print(data)
 
-    student = Student(name=name,score=score,city=city)
-    student.save()   
+
+    serializer = StudentSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'result': 'Student added successfully'})
+    else:
+        return Response({'result': 'Error'})
+    # print(serializer.is_valid())
+
+
+
+     
 
     
-    return Response({'result': data})
+
 
 
 
