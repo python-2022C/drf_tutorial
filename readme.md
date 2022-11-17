@@ -37,6 +37,7 @@ def hello_world(request):
 
 ## 5. Create a URL
 
+
 ```python
 # quickstart/urls.py
 from django.urls import path
