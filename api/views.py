@@ -14,6 +14,10 @@ def index(request: Request):
     return Response({'result': data})
 
 
+
+
+
+
 @api_view(['POST'])
 def addStudent(request: Request):
     data = request.data
@@ -21,12 +25,14 @@ def addStudent(request: Request):
 
 
     serializer = StudentSerializer(data=data)
+  
     if serializer.is_valid():
         serializer.save()
         return Response({'result': 'Student added successfully'})
     else:
-        return Response({'result': 'Error'})
+        return Response(serializer.errors)
     # print(serializer.is_valid())
+
 
 
 
