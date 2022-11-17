@@ -36,8 +36,8 @@ def addStudent(request: Request):
 
 @api_view(['GET'])
 def getStudents(request: Request):
-    students = Student.objects.get(id=1)
-    serializer = StudentSerializer(students)
+    students = Student.objects.all()
+    serializer = StudentSerializer(students, many=True)
     return Response(serializer.data)
     
 
