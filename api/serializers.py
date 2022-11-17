@@ -1,4 +1,4 @@
-from .models import Student
+from .models import Student,Course
 
 from rest_framework import serializers
 
@@ -9,6 +9,11 @@ class StudentSerializer(serializers.Serializer):
     )
     score = serializers.IntegerField()
     city = serializers.CharField(max_length=50)
+    course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
+    
+ 
+
+    
 
     def create(self, validated_data):
         return Student.objects.create(**validated_data)  #         
@@ -19,5 +24,6 @@ class StudentSerializer(serializers.Serializer):
         instance.city = validated_data.get('city', instance.city)
         instance.save()
         return instance
+
 
     
