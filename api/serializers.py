@@ -11,9 +11,7 @@ class StudentSerializer(serializers.Serializer):
     city = serializers.CharField(max_length=50)
     course = serializers.PrimaryKeyRelatedField(queryset=Course.objects.all())
     
- 
-
-    
+     
 
     def create(self, validated_data):
         return Student.objects.create(**validated_data)  #         
@@ -26,4 +24,7 @@ class StudentSerializer(serializers.Serializer):
         return instance
 
 
-    
+class CourseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = ['name', 'description']

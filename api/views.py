@@ -2,8 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 # Import django rest framework request
 from rest_framework.request import Request
-from .models import Student
-from .serializers import StudentSerializer
+from .models import Student,Course
+from .serializers import StudentSerializer,CourseSerializer
 # Create your views here.
 @api_view(['GET'])
 def index(request: Request):
@@ -61,7 +61,11 @@ def removeStudent(request: Request, id):
 
 
      
-
+@api_view(['GET'])
+def getCourses(request: Request):
+    courses = Course.objects.all()
+    serializer = CourseSerializer(courses, many=True)
+    return Response(serializer.data)
     
 
 
