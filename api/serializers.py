@@ -11,10 +11,7 @@ class StudentSerializer(serializers.Serializer):
     city = serializers.CharField(max_length=50)
 
     def create(self, validated_data):
-        return Student.objects.create(
-            name=validated_data['name'],
-            score=validated_data['score'],
-            city=validated_data['city']            
+        return Student.objects.create(**validated_data)          
         )
 
     
