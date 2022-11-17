@@ -40,7 +40,23 @@ def getStudents(request: Request):
     serializer = StudentSerializer(students)
     return Response(serializer.data)
     
+
+@api_view(['GET'])
+def getStudent(request: Request, id):
+    # Check if student exists
+    try:
+        students = Student.objects.get(id=id)
+        serializer = StudentSerializer(students)
+        return Response(serializer.data)
+    except Student.DoesNotExist:
+        return Response({'result': 'Student not found'})
     
+
+@api_view(['GET'])
+def removeStudent(request: Request, id):
+    students = Student.objects.get(id=id)
+    students.delete()
+    return Response({'result': 'Student removed successfully'})
 
 
 
