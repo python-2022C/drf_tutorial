@@ -68,6 +68,20 @@ def getCourses(request: Request):
     return Response(serializer.data)
     
 
+@api_view(['POST'])
+def addCourse(request: Request):
+    data = request.data
+  
+
+    serializer = CourseSerializer(data=data)
+  
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'result': 'Course added successfully'})
+    else:
+        return Response(serializer.errors)
+
+
 
 
 

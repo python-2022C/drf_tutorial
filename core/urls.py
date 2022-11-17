@@ -7,7 +7,8 @@ from api.views import(
     getStudents,
     getStudent,
     removeStudent,
-    getCourses
+    getCourses,
+    addCourse,
 )
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,5 +18,6 @@ urlpatterns = [
     path('getStudent/<int:id>/',getStudent),
     path('getStudent/<int:id>/remove',removeStudent),
     path('getCourses/',getCourses),
+    path('addCourse/',addCourse),
 
 ]
